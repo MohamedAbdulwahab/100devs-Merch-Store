@@ -1,0 +1,38 @@
+<%- include('partials/header') -%>
+
+<main class="container my-5">
+  <div class="row justify-content-center align-items-end">
+      <div class="col-10 col-sm-10 col-md-7 col-lg-4 card">
+        <div class="card-body">
+          <h2 class="card-title text-center my-2">
+            <i class="bi bi-shop-window"></i>
+            100Devs Store
+          </h2>
+          <hr class="">
+          <h5 class="card-subtitle text-center text-muted mt-4">Sign into your account</h5>
+          
+          <form action="/login" method="POST" class="my-4">
+          <div class="input-group mb-3">
+              <span class="input-group-text">
+                <i class="bi bi-envelope-fill"></i>
+              </span>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" placeholder="Email address"/>
+          </div>
+          <div class="input-group mb-4">
+            <span class="input-group-text">
+              <i class="bi bi-person-fill"></i>
+            </span>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password"/>
+          </div>
+          <button type="submit" class="btn btn-secondary bg-dark col-12 shadow">LOGIN</button>
+          <p class="lead text-muted my-3 text-center">Don't have an account? <a href="/signup">Register here</a></p>
+        </form>
+        </div>
+      </div>
+
+
+    </section>
+  </div>
+</main>
+
+<%- include('partials/footer') -%>
