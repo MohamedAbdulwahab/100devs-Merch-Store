@@ -1,0 +1,137 @@
+/* Box Model Hack */
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+/* Colors */
+:root {
+    --devGreen: #B0F2B4;
+    --devBlack: #1E2019;
+    --devGrey: #BFB1C1;
+    --darkBlue: #575D90;
+    --skyBlue: #5ADBFF;
+    --textBlue: #2D3362;
+}
+
+/*--- LAYOUT ---*/
+body{
+    text-align: center;
+}
+
+/* - header - */
+header{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    padding: 1rem;
+}
+header > *{
+    flex: 1 33.333%;
+}
+.nav-menu{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    list-style: none;
+    gap: .75rem;
+    align-items: center;
+}
+#cart-icon, 
+#profile-icon{
+    height: 20px;
+}
+
+/* - main - */
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem 3rem;
+    gap: 4rem;
+}
+.main-top, .main-bottom{
+    display: flex;
+    margin: auto;
+}
+.main-top{
+    justify-content: space-around;
+    align-items: center;
+    gap: 10%;
+}
+.main-top-left{
+    text-align: left;
+}
+#main-img{
+    max-width: 500px;
+}
+.main-bottom{
+    flex-direction: column;
+    align-content: center;
+    margin: 0 10%;
+    gap: 2rem;
+}
+.main-bottom-divs{
+    display: flex;
+    flex: row wrap;
+    justify-content: space-around;
+}
+
+/* - footer - */
+footer{
+    text-align: center;
+    padding: 1rem 0;
+    line-height: 1.5rem;
+}
+
+/* MEDIA QUERIES */
+
+@media all and (max-width: 800px){
+    .nav-menu{
+        justify-content: space-around;
+    }
+    .logo-name{ 
+        flex: 1 auto; 
+        justify-content: space-around;
+    }
+    header > *{
+        flex: 1 100%;
+    }
+}
+@media all and (max-width: 500px){
+    .main-bottom-divs{
+        flex-direction: column;
+    }
+}
+
+
+
+/* STYLING */
+*{
+    font-family: 'Montserrat', 'Helvetica', sans-serif;
+}
+header, footer{
+    background-color: var(--darkBlue);
+    box-shadow: 0 8px 4px -4px var(--devGrey);
+}
+li{
+    font-weight: 500;
+    font-size: 1rem;
+}
+h1, h2{
+    font-size: 2rem;
+    font-weight: 700;
+}
+h3{
+    font-size: 1.5rem;
+}
+h3,footer > p,span,#cart-icon,#profile-icon,.nav-menu{
+    color: white;
+}
+p,h1,h2{
+    color: var(--textBlue);
+}
+a{
+    color: var(--skyBlue);
+    text-decoration: none;
+    font-weight: 700;
+}
