@@ -1,38 +1,36 @@
 <%- include('partials/header') -%>
 
-<main class="container">
-  <div class="row justify-content-center">
-    <section class="col-6 mt-5">
-      <% if (locals.messages.errors) { %> <% messages.errors.forEach( el => { %>
-      <div class="alert alert-danger"><%= el.msg %></div>
-      <% }) %> <% } %> <% if (locals.messages.info) { %> <%
-      messages.info.forEach( el => { %>
-      <div class="alert alert-info"><%= el.msg %></div>
-      <% }) %> <% } %>
-      <form action="/login" method="POST">
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label"
-            >Email address</label
-          >
-          <input
-            type="email"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            name="email"
-          />
+<main class="container my-5">
+  <div class="row justify-content-center align-items-end">
+      <div class="col-10 col-sm-10 col-md-7 col-lg-4 card">
+        <div class="card-body">
+          <h2 class="card-title text-center my-2">
+            <i class="bi bi-shop-window"></i>
+            100Devs Store
+          </h2>
+          <hr class="">
+          <h5 class="card-subtitle text-center text-muted mt-4">Sign into your account</h5>
+          
+          <form action="/login" method="POST" class="my-4">
+          <div class="input-group mb-3">
+              <span class="input-group-text">
+                <i class="bi bi-envelope-fill"></i>
+              </span>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" placeholder="Email address"/>
+          </div>
+          <div class="input-group mb-4">
+            <span class="input-group-text">
+              <i class="bi bi-person-fill"></i>
+            </span>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password"/>
+          </div>
+          <button type="submit" class="btn btn-secondary bg-dark col-12 shadow">LOGIN</button>
+          <p class="lead text-muted my-3 text-center">Don't have an account? <a href="/signup">Register here</a></p>
+        </form>
         </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            id="exampleInputPassword1"
-            name="password"
-          />
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+      </div>
+
+
     </section>
   </div>
 </main>
