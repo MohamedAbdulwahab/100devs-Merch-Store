@@ -27,7 +27,7 @@ let generateShop = ()=>{
         </div>
         `;
         })
-        .join(''));  
+        .join(''));
 };
 
 generateShop()
@@ -54,7 +54,7 @@ let decrement = (id) => {
     let search = basket.find((x)=> x.id === selectedItem.id);
 
     if(search === undefined) return;
-    else if(search.item === 0) return;    
+    else if(search.item === 0) return;
     else{
         search.item -= 1;
     }
@@ -72,7 +72,7 @@ let update = (id) => {
 
 let calculation = () => {
     let cartIcon = document.getElementById("cartAmount")
-    cartIcon.innerHTML = basket.map((x)=> x.item).reduce((a,c)=> a+c, 0)
+    cartIcon.innerHTML = basket.map((x)=> x.item).reduce((a,c)=> a+c, 0) || 0
 };
 
 calculation();
