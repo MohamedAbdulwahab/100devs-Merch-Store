@@ -43,9 +43,9 @@ let generateCartItems = () => {
         ShoppingCart.innerHTML = ``;
         label.innerHTML = `
         <h2>Cart is Empty</h2>
-        <a href="index.html">
+        <a href="/">
             <button class="HomeBtn">Back To Home<?button>
-        </a> 
+        </a>
         `;
     }
 };
@@ -55,7 +55,7 @@ generateCartItems();
 let increment = (id) => {
     let selectedItem = id;
     let search = basket.find((x) => x.id === selectedItem.id);
-  
+
     if (search === undefined) {
       basket.push({
         id: selectedItem.id,
@@ -64,7 +64,7 @@ let increment = (id) => {
     } else {
       search.item += 1;
     }
-  
+
     generateCartItems();
     update(selectedItem.id);
     localStorage.setItem("data", JSON.stringify(basket));
@@ -72,7 +72,7 @@ let increment = (id) => {
   let decrement = (id) => {
     let selectedItem = id;
     let search = basket.find((x) => x.id === selectedItem.id);
-  
+
     if (search === undefined) return;
     else if (search.item === 0) return;
     else {
@@ -83,7 +83,7 @@ let increment = (id) => {
     generateCartItems();
     localStorage.setItem("data", JSON.stringify(basket));
   };
-  
+
   let update = (id) => {
     let search = basket.find((x) => x.id === id);
     // console.log(search.item);
@@ -91,7 +91,7 @@ let increment = (id) => {
     calculation();
     TotalAmount();
   };
-  
+
   let removeItem = (id) => {
     let selectedItem = id;
     // console.log(selectedItem.id);
@@ -101,21 +101,21 @@ let increment = (id) => {
     calculation();
     localStorage.setItem("data", JSON.stringify(basket));
   };
-  
+
   let clearCart = () => {
     basket = [];
     generateCartItems();
     calculation();
     localStorage.setItem("data", JSON.stringify(basket));
   };
-  
+
   let TotalAmount = () => {
     if (basket.length !== 0) {
       let amount = basket
         .map((x) => {
           let { item, id } = x;
           let search = shopItemsData.find((y) => y.id === id) || [];
-  
+
           return item * search.price;
         })
         .reduce((x, y) => x + y, 0);
@@ -127,7 +127,7 @@ let increment = (id) => {
       `;
     } else return;
   };
-  
+
   TotalAmount();
 
 // generate form required to enter credit card info
@@ -177,7 +177,7 @@ function showCreditCardForm() {
   document.body.appendChild(form);
 }
 
-  // add ability to accept CC payment via the form 
+  // add ability to accept CC payment via the form
 
   function checkout(creditCardNumber, expiryDate, securityCode, amount) {
     // Validate the input data
@@ -193,7 +193,7 @@ function showCreditCardForm() {
     if (amount <= 0) {
       return { success: false, error: "Invalid amount" };
     }
-  
+
     // Send the payment information to the payment gateway
     const paymentResponse = paymentGateway.sendPayment({
       creditCardNumber,
@@ -201,7 +201,7 @@ function showCreditCardForm() {
       securityCode,
       amount,
     });
-  
+
     if (paymentResponse.success) {
       // Payment successful, update the order status and send a receipt
       updateOrderStatus(orderId, "PAID");
@@ -219,17 +219,17 @@ function showCreditCardForm() {
   function validateCreditCardNumber(creditCardNumber) {
     // Remove any spaces or hyphens from the credit card number
     creditCardNumber = creditCardNumber.replace(/[\s-]/g, "");
-  
+
     // Check that the credit card number is a string of numbers
     if (!/^\d+$/.test(creditCardNumber)) {
       return false;
     }
-  
+
     // Check that the credit card number is the correct length
     if (creditCardNumber.length < 12 || creditCardNumber.length > 19) {
       return false;
     }
-  
+
     // Use the Luhn algorithm to check the credit card number for validity
     let sum = 0;
     let isEven = false;
@@ -244,7 +244,7 @@ function showCreditCardForm() {
       sum += digit;
       isEven = !isEven;
     }
-  
+
     return sum % 10 === 0;
   }
 
@@ -256,37 +256,37 @@ function showCreditCardForm() {
     if (!expiryDateRegex.test(expiryDate)) {
       return false;
     }
-  
+
     // Split the expiry date into the month and year
     const [month, year] = expiryDate.split("/");
     const currentDate = new Date();
     const currentMonth = currentDate.getMonth() + 1;
     const currentYear = currentDate.getFullYear();
-  
+
     // Check that the expiry year is equal to or greater than the current year
     if (year < currentYear) {
       return false;
     }
-  
+
     // If the expiry year is the same as the current year, check that the expiry month is greater than the current month
     if (year === currentYear && month < currentMonth) {
       return false;
     }
-  
+
     return true;
   }
 
-  // checking the security code is valid for a credit card 
+  // checking the security code is valid for a credit card
 
   function validateSecurityCode(securityCode, creditCardNumber) {
     // Remove any spaces or hyphens from the credit card number
     creditCardNumber = creditCardNumber.replace(/[\s-]/g, "");
-  
+
     // Check that the security code is a string of numbers
     if (!/^\d+$/.test(securityCode)) {
       return false;
     }
-  
+
     // Check the length of the security code based on the type of credit card
     if (creditCardNumber.startsWith("4") && securityCode.length !== 3) {
       return false;
@@ -297,6 +297,6 @@ function showCreditCardForm() {
     if (securityCode.length !== 3) {
       return false;
     }
-  
+
     return true;
   }

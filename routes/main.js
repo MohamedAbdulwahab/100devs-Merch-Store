@@ -5,7 +5,7 @@ const homeController = require("../controllers/home");
 const storeController = require("../controllers/store");
 const { ensureAuth } = require("../middleware/auth");
 
-// Main Routes 
+// Main Routes
 router.get("/", homeController.getIndex);
 router.get("/storeMain", ensureAuth, storeController.getStoreMain);
 
@@ -15,5 +15,9 @@ router.post("/login", authController.postLogin);
 router.get("/logout", authController.logout);
 router.get("/signup", authController.getSignup);
 router.post("/signup", authController.postSignup);
+
+// Routes for store actions like shop/cart
+router.get("/shop", storeController.getShop);
+router.get("/cart", storeController.getCart);
 
 module.exports = router;
