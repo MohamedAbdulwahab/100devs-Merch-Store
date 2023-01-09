@@ -1,5 +1,10 @@
 module.exports = {
   getIndex: (req, res) => {
-    res.render("index.ejs");
+    try {
+      const title = '100Devs Store';
+      res.render("index.ejs", { title: title });
+    } catch(error) {
+      console.log(error);
+    }
   },
 };
