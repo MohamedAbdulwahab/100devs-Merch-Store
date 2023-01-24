@@ -37,17 +37,19 @@ header > *{
     gap: .75rem;
     align-items: center;
 }
-#cart-icon,
+#cart-icon, 
 #profile-icon{
     height: 20px;
 }
-
+#logo-icon{
+  width: 20%;
+}
 /* - main - */
 main{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 2rem 3rem;
+    padding: 2rem ;
     gap: 4rem;
 }
 .main-top, .main-bottom{
@@ -76,6 +78,25 @@ main{
     flex: row wrap;
     justify-content: space-around;
 }
+
+/*-------------------------Carousel Items on '/' route -------------------*/
+.carousel-item{
+  text-align: center;
+  
+}
+#carousel{
+  background-color: black;
+  width: 100%;
+}
+.carousel-inner, .carousel-inner > .item{
+  height:100%;
+  }
+  .carousel-inner{
+    left: 38%
+  }
+
+
+
 
 /* - footer - */
 footer{
